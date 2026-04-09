@@ -3,4 +3,5 @@ import time
 
 kit = ServoKit(channels=16)
 
-kit.servo[3].angle = None
+for i in range(12):
+    kit.servo[i].angle = None
