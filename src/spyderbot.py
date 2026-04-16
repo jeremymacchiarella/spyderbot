@@ -82,9 +82,9 @@ class Spyderbot:
 
     def move_hip_backward(self, servo_idx):
         if (servo_idx > 5):
-            self.move_servo_delta(servo_idx, -30)
-        else:
             self.move_servo_delta(servo_idx, 30)
+        else:
+            self.move_servo_delta(servo_idx, -30)
 
     
 
