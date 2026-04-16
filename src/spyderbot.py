@@ -65,6 +65,30 @@ class Spyderbot:
 
         self.kit.servo[servo_idx].angle = goal
 
+    def lift_knee(self, servo_idx):
+        self.move_servo(servo_idx, 120)
+
+    def lower_knee(self, servo_idx):
+        self.move_servo(servo_idx, 64)
+
+    def move_hip_forward(self, servo_idx):
+        if (servo_idx > 5):
+            self.move_servo_delta(servo_idx, -30)
+        else:
+            self.move_servo_delta(servo_idx, 30)
+
+    def move_hip_middle(self, servo_idx):
+        self.move_servo(servo_idx, 90)
+
+    def move_hip_backward(self, servo_idx):
+        if (servo_idx > 5):
+            self.move_servo_delta(servo_idx, -30)
+        else:
+            self.move_servo_delta(servo_idx, 30)
+
+    
+
+
     def shutdown(self):
         for i in range(12):
             # stop sending pwm signals to servos

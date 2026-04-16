@@ -14,3 +14,6 @@ servos:
 
 virtual environemnt: 
 source ~/spyderbot-env/bin/activate
+
+for right side hips: positive angle is foward
+for left side hips: positive angle is backward
