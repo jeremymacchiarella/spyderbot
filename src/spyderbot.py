@@ -137,7 +137,7 @@ class Spyderbot:
             time.sleep(delay)
 
     
-    def move_servos_slow_group_delta(self, servo_deltas, step=2, delay=0.1):
+    def move_servos_slow_group_delta(self, servo_deltas, step=2, delay=0.01):
         servo_targets = []
 
         for servo_idx, delta in servo_deltas:
