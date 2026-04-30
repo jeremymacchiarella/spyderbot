@@ -18,21 +18,21 @@ def main():
 
         
 
-        spyderbot.move_hips_forward_group('left')
+        spyderbot.move_hips_forward_group_abs('left')
 
         spyderbot.lower_knees_group('left')
 
         spyderbot.lift_knees_group('right')
 
-        spyderbot.move_hips_backward_group('left')
+        spyderbot.move_hips_backward_group_abs('left')
 
-        spyderbot.move_hips_forward_group('right')
+        spyderbot.move_hips_forward_group_abs('right')
 
         spyderbot.lower_knees_group('right')
 
         spyderbot.lift_knees_group('left')
 
-        spyderbot.move_hips_backward_group('right')
+        spyderbot.move_hips_backward_group_abs('right')
 
         
 
