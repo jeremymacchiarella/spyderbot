@@ -86,6 +86,24 @@ class Spyderbot:
         else:
             self.move_servo_delta(servo_idx, -30)
 
+    def lift_knee_slow(self, servo_idx):
+        self.move_servo_slow(servo_idx, 120)
+
+    def lower_knee_slow(self, servo_idx):
+        self.move_servo_slow(servo_idx, 64) 
+    
+    def move_hip_forward_slow(self, servo_idx):
+        if (servo_idx > 5):
+            self.move_servo_slow_delta(servo_idx, -30)
+        else:
+            self.move_servo_slow_delta(servo_idx, 30)
+
+    def move_hip_backward_slow(self, servo_idx):
+        if (servo_idx > 5):
+            self.move_servo_slow_delta(servo_idx, 30)
+        else:
+            self.move_servo_slow_delta(servo_idx, -30)
+
     
 
 
