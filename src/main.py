@@ -9,22 +9,39 @@ def main():
 
     # makes shutdown function run when this program exits
     atexit.register(spyderbot.shutdown)
+
+    spyderbot.lift_knees_group('left')
     for i in range(10):
         # spyderbot.lift_knee_slow(0)
         # spyderbot.lift_knee_slow(4)
         # spyderbot.lift_knee_slow(8)
 
+        
+
+        spyderbot.move_hips_forward_group('left')
+
+        spyderbot.lower_knees_group('left')
+
+        spyderbot.lift_knees_group('right')
+
+        spyderbot.move_hips_backward_group('left')
+
+        spyderbot.move_hips_forward_group('right')
+
+        spyderbot.lower_knees_group('right')
+
         spyderbot.lift_knees_group('left')
+
+        spyderbot.move_hips_backward_group('right')
+
+        
+
+
 
      
 
 
-        spyderbot.lift_knees_group('right')
-
-
-        spyderbot.lower_knees_group('left')
-
-        spyderbot.lower_knees_group('right')
+        
 
         time.sleep(1)
 
