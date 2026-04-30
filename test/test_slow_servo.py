@@ -8,7 +8,8 @@ def main():
 
     spyderbot.move_servo_slow_delta(0, 90)
     time.sleep(1)
-    spyderbot.move_servo_delta(0, -90)
+    spyderbot.move_servo_slow_delta(0, -90)
+    time.sleep(2)
 
     
 
