@@ -10,30 +10,44 @@ def main():
     # makes shutdown function run when this program exits
     atexit.register(spyderbot.shutdown)
     for i in range(10):
-        spyderbot.lift_knee_slow(0)
-        spyderbot.lift_knee_slow(4)
-        spyderbot.lift_knee_slow(8)
-        time.sleep(0.2)
-        spyderbot.move_hip_forward_slow(1)
-        spyderbot.move_hip_forward_slow(5)
-        spyderbot.move_hip_forward_slow(9)
-        time.sleep(0.2)
-        spyderbot.lower_knee_slow(0)
-        spyderbot.lower_knee_slow(4)
-        spyderbot.lower_knee_slow(8)
-        time.sleep(0.2)
-        spyderbot.lift_knee_slow(2)
-        spyderbot.lift_knee_slow(6)
-        spyderbot.lift_knee_slow(10)
-        time.sleep(0.2)
-        spyderbot.move_hip_backward_slow(1)
-        spyderbot.move_hip_backward_slow(5)
-        spyderbot.move_hip_backward_slow(9)
-        time.sleep(0.2)
-        spyderbot.lower_knee_slow(2)
-        spyderbot.lower_knee_slow(6)
-        spyderbot.lower_knee_slow(10)
-        time.sleep(0.2)
+        # spyderbot.lift_knee_slow(0)
+        # spyderbot.lift_knee_slow(4)
+        # spyderbot.lift_knee_slow(8)
+
+        spyderbot.lift_knees_group('left')
+
+        print("left done")
+
+        time.sleep(1)
+
+        spyderbot.lift_knees_group('right')
+
+        print("right done")
+
+        time.sleep(1)
+
+       
+        # time.sleep(0.2)
+        # spyderbot.move_hip_forward_slow(1)
+        # spyderbot.move_hip_forward_slow(5)
+        # spyderbot.move_hip_forward_slow(9)
+        # time.sleep(0.2)
+        # spyderbot.lower_knee_slow(0)
+        # spyderbot.lower_knee_slow(4)
+        # spyderbot.lower_knee_slow(8)
+        # time.sleep(0.2)
+        # spyderbot.lift_knee_slow(2)
+        # spyderbot.lift_knee_slow(6)
+        # spyderbot.lift_knee_slow(10)
+        # time.sleep(0.2)
+        # spyderbot.move_hip_backward_slow(1)
+        # spyderbot.move_hip_backward_slow(5)
+        # spyderbot.move_hip_backward_slow(9)
+        # time.sleep(0.2)
+        # spyderbot.lower_knee_slow(2)
+        # spyderbot.lower_knee_slow(6)
+        # spyderbot.lower_knee_slow(10)
+        # time.sleep(0.2)
 
 
 

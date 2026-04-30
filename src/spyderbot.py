@@ -106,6 +106,49 @@ class Spyderbot:
         else:
             self.move_servo_slow_delta(servo_idx, -30)
 
+    def move_servos_slow_group(self, servo_targets, step=2, delay=0.01):
+
+        current_angles = {}
+        for servo_idx, target in servo_targets:
+            angle = self.kit.servo[servo_idx].angle
+            if angle is None:
+                print(f"Error: Servo {servo_idx} angle is None")
+                sys.exit()
+            current_angles[servo_idx] = angle
+
+        done = False
+
+        while not done: 
+            done = True
+            for servo_idx, target in servo_targets:
+                current = current_angles[servo_idx]
+
+                if abs(current - target) > 0:
+                    done = False
+
+                    if current < target:
+                        current = min(current + step, target)
+                    else:
+                        current = max(current - step, target)
+
+                    self.kit.servo[servo_idx].angle = current
+                    current_angles[servo_idx] = current
+
+            time.sleep(delay)
+
+    def lift_knees_group(self, side):
+        if (side == 'right'):
+            self.move_servos_slow_group([(0, 120),(4, 120),(8, 120)])
+
+        if (side == 'left'):
+            self.move_servos_slow_group([(2, 120),(6, 120),(10, 120)])
+
+    
+
+    
+    
+    
+
     
 
 
