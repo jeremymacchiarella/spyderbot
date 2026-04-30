@@ -130,18 +130,22 @@ def main():
     atexit.register(bot.shutdown)
     time.sleep(1)
 
-    while True:
-        # tripod A step
-        lift_tripod_a(bot)
-        move_tripod_a_forward(bot)
-        lower_tripod_a(bot)
-        move_tripod_a_back_to_middle(bot)
+    lift_tripod_a(bot)
 
-        # tripod B step
-        lift_tripod_b(bot)
-        move_tripod_b_forward(bot)
-        lower_tripod_b(bot)
-        move_tripod_b_back_to_middle(bot)
+    time.sleep(1)
+
+    # while True:
+    #     # tripod A step
+    #     lift_tripod_a(bot)
+    #     move_tripod_a_forward(bot)
+    #     lower_tripod_a(bot)
+    #     move_tripod_a_back_to_middle(bot)
+
+    #     # tripod B step
+    #     lift_tripod_b(bot)
+    #     move_tripod_b_forward(bot)
+    #     lower_tripod_b(bot)
+    #     move_tripod_b_back_to_middle(bot)
 
 
 if __name__ == "__main__":
