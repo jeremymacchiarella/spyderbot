@@ -16,13 +16,15 @@ def main():
 
         spyderbot.lift_knees_group('left')
 
-        print("left done")
+     
 
-        time.sleep(1)
 
         spyderbot.lift_knees_group('right')
 
-        print("right done")
+
+        spyderbot.lower_knees_group('left')
+
+        spyderbot.lower_knees_group('right')
 
         time.sleep(1)
 

@@ -136,12 +136,44 @@ class Spyderbot:
 
             time.sleep(delay)
 
+    
+    def move_servos_slow_group_delta(self, servo_deltas, step=2, delay=0.1):
+        servo_targets = []
+
+        for servo_idx, delta in servo_deltas:
+            current = self.kit.servo[servo_idx].angle
+
+            if current is None: 
+                print(f"Error: Servo {servo_idx} angle is None")
+                sys.exit()
+
+            goal = int(current + delta)
+
+            if goal > 180 or goal < 0:
+                print(f"error: invalid target for servo {servo_idx}")
+                sys.exit()
+
+            servo_targets.append((servo_idx, goal))
+
+        self.move_servos_slow_group(servo_targets, step, delay)
+
+            
+        
+
+
     def lift_knees_group(self, side):
         if (side == 'right'):
             self.move_servos_slow_group([(0, 120),(4, 120),(8, 120)])
 
         if (side == 'left'):
             self.move_servos_slow_group([(2, 120),(6, 120),(10, 120)])
+
+    def lower_knees_group(self, side):
+        if (side == 'right'):
+            self.move_servos_slow_group([(0, 60),(4, 60),(8, 60)])
+
+        if (side == 'left'):
+            self.move_servos_slow_group([(2, 60),(6, 60),(10, 60)])
 
     
 
