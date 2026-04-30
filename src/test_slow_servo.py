@@ -1,15 +1,13 @@
-from spyderbot import Spyderbot
 import atexit
 import time
-
-
+from spyderbot import Spyderbot
 def main():
     spyderbot = Spyderbot()
 
-    spyderbot.move_servo_slow(0, 120)
-    print("done with slow move")
+    spyderbot.move_servo_slow_delta(0, 90)
     time.sleep(1)
-    spyderbot.move_servo(0, 60)
+    spyderbot.move_servo_slow_delta(0, -90)
+    time.sleep(2)
 
     
 

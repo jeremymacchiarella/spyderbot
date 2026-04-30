@@ -19,8 +19,8 @@ class Spyderbot:
             self.kit.servo[i].angle = self.SERVO_INIT_ANGLES[i]
 
     def move_servo_slow(self, servo_idx, target_angle): # not tested yet
-        step = 1
-        delay = 0.02
+        step = 2
+        delay = 0.01
 
         current_angle = self.kit.servo[servo_idx].angle
         if current_angle is None:
@@ -68,23 +68,25 @@ class Spyderbot:
     def lift_knee(self, servo_idx):
         self.move_servo(servo_idx, 120)
 
+    
+
     def lower_knee(self, servo_idx):
         self.move_servo(servo_idx, 64)
 
     def move_hip_forward(self, servo_idx):
         if (servo_idx > 5):
-            self.move_servo_delta(servo_idx, -30)
+            self.move_servo_delta(servo_idx, -50)
         else:
-            self.move_servo_delta(servo_idx, 30)
+            self.move_servo_delta(servo_idx, 50)
 
     def move_hip_middle(self, servo_idx):
         self.move_servo(servo_idx, 90)
 
     def move_hip_backward(self, servo_idx):
         if (servo_idx > 5):
-            self.move_servo_delta(servo_idx, 30)
+            self.move_servo_delta(servo_idx, 50)
         else:
-            self.move_servo_delta(servo_idx, -30)
+            self.move_servo_delta(servo_idx, -50)
 
     def lift_knee_slow(self, servo_idx):
         self.move_servo_slow(servo_idx, 120)
