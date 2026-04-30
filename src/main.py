@@ -68,6 +68,9 @@ def main():
         # spyderbot.lower_knee_slow(10)
         # time.sleep(0.2)
 
+    spyderbot.lower_knees_group("left")
+    time.sleep(1)
+
 
 
 if __name__ == "__main__":
