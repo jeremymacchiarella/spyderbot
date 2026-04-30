@@ -175,6 +175,20 @@ class Spyderbot:
         if (side == 'left'):
             self.move_servos_slow_group([(2, 60),(6, 60),(10, 60)])
 
+    def move_hips_forward_group(self, side):
+        if (side == 'right'):
+            self.move_servos_slow_group_delta([(1, -50),(5, -50),(9, -50)])
+
+        if (side == 'left'):
+            self.move_servos_slow_group_delta([(3, 50),(7, 50),(11, 50)])
+
+    def move_hips_backward_group(self, side):
+        if (side == 'right'):
+            self.move_servos_slow_group_delta([(1, 50),(5, 50),(9, 50)])
+
+        if (side == 'left'):
+            self.move_servos_slow_group_delta([(3, -50),(7, -50),(11, -50)])
+
     
 
     
