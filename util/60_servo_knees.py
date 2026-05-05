@@ -4,4 +4,4 @@ import time
 kit = ServoKit(channels=16)
 
 for i in range(0, 12, 2):
-    kit.servo[i].angle = 60
+    kit.servo[i].angle = 64
