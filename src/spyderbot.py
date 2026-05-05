@@ -210,7 +210,7 @@ class Spyderbot:
 
     
 
-    def turn_right(self, delta = 60):
+    def turn_right(self, delta = 40):
         self.lift_knees_group('left')
 
         
@@ -244,7 +244,7 @@ class Spyderbot:
 
         # self.lower_knees_group('left')
 
-    def turn_left(self, delta = 60):
+    def turn_left(self, delta = 40):
         self.lift_knees_group('right')
 
         
