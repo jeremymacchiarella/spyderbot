@@ -13,7 +13,8 @@ def main():
     #spyderbot.lift_knees_group('left')
     for i in range(10):
 
-        spyderbot.turn_right()
+        # spyderbot.turn_right()
+        spyderbot.turn_left()
         # spyderbot.lift_knee_slow(0)
         # spyderbot.lift_knee_slow(4)
         # spyderbot.lift_knee_slow(8)
