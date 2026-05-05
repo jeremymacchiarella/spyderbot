@@ -170,7 +170,7 @@ class Spyderbot:
 
     def lower_knees_group(self, side):
         if (side == 'right'):
-            self.move_servos_slow_group([(0, 60),(4, 60),(8, 60)])
+            self.move_servos_slow_group([(0, 60),(4, 64),(8, 60)])
 
         if (side == 'left'):
             self.move_servos_slow_group([(2, 60),(6, 60),(10, 60)])
