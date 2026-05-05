@@ -1,34 +1,27 @@
-from spyderbot import Spyderbot
-import atexit
+import curses
 import time
-import keyboard
 
+def main(stdscr):
+    stdscr.nodelay(True)  # non-blocking input
 
-def main():
-    #spyderbot = Spyderbot()
-    time.sleep(1)
+    while True:
+        key = stdscr.getch()
 
-    # makes shutdown function run when this program exits
-    #atexit.register(spyderbot.shutdown)
-
-    while (1):
-        if keyboard.is_pressed('w'):
+        if key == ord('w'):
             print("forward")
-    
-        elif keyboard.is_pressed('a'):
+
+        elif key == ord('a'):
             print("turn left")
-    
-        elif keyboard.is_pressed('d'):
+
+        elif key == ord('d'):
             print("turn right")
-    
-        elif keyboard.is_pressed('s'):
+
+        elif key == ord('s'):
             print("backward")
 
-    
-        
-    time.sleep(1)
+        elif key == ord('q'):
+            break
 
+        time.sleep(0.05)
 
-
-if __name__ == "__main__":
-    main()
+curses.wrapper(main)
