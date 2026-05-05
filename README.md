@@ -1,4 +1,4 @@
-servos: 
+**Servos:** 
 0: right front knee
 1: right front hip
 2: right side knee
