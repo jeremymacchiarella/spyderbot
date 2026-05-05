@@ -243,7 +243,7 @@ class Spyderbot:
         self.move_servos_slow_group([(3, 90), (7, 90), (11, 90)])
         
 
-        self.lower_knees_group('right')
+        # self.lower_knees_group('right')
 
         
         
