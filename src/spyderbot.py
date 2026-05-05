@@ -227,21 +227,21 @@ class Spyderbot:
 
         self.lift_knees_group('left')
         # hips rotate foward
-        time.sleep(0.5)
+        
         self.move_servos_slow_group([(3, 90+delta), (7, 90+delta), (11, 90+delta)])
-        time.sleep(0.5)
+        
 
         self.move_servos_slow_group([(1, 90), (5, 90), (9, 90)])
-        time.sleep(0.5)
+        
 
         self.lower_knees_group('left')
 
         time.sleep(0.5)
         self.lift_knees_group('right')
-        time.sleep(0.5)
+        
 
         self.move_servos_slow_group([(3, 90), (7, 90), (11, 90)])
-        time.sleep(0.5)
+        
 
         self.lower_knees_group('right')
 

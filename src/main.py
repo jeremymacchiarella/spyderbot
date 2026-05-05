@@ -10,7 +10,7 @@ def main():
     # makes shutdown function run when this program exits
     atexit.register(spyderbot.shutdown)
 
-    spyderbot.lift_knees_group('left')
+    #spyderbot.lift_knees_group('left')
     for i in range(10):
 
         spyderbot.turn_left(20)

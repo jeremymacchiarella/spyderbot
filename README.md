@@ -20,6 +20,7 @@ for left side hips: positive angle is backward
 
 
 moving foward: 
+lift left before moving foward
 # spyderbot.move_hips_forward_group_abs('left')
 
         # spyderbot.lower_knees_group('left')
