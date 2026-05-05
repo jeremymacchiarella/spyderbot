@@ -279,9 +279,23 @@ class Spyderbot:
         # self.lower_knees_group('right')
 
         
-        
+    def move_forward(self):
 
+        self.lift_knees_group('left')
 
+        self.lower_knees_group('left')
+
+        self.lift_knees_group('right')
+
+        self.move_hips_backward_group_abs('left')
+
+        self.move_hips_forward_group_abs('right')
+
+        self.lower_knees_group('right')
+
+        self.lift_knees_group('left')
+
+        self.move_hips_backward_group_abs('right')
 
     
 
