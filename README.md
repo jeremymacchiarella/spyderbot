@@ -17,3 +17,23 @@ source ~/spyderbot-env/bin/activate
 
 for right side hips: positive angle is foward
 for left side hips: positive angle is backward
+
+
+moving foward: 
+# spyderbot.move_hips_forward_group_abs('left')
+
+        # spyderbot.lower_knees_group('left')
+
+        # spyderbot.lift_knees_group('right')
+
+        # spyderbot.move_hips_backward_group_abs('left')
+
+        # spyderbot.move_hips_forward_group_abs('right')
+
+        # spyderbot.lower_knees_group('right')
+
+        # spyderbot.lift_knees_group('left')
+
+        # spyderbot.move_hips_backward_group_abs('right')
+
+    lower left at end of for loop

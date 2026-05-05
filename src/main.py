@@ -12,27 +12,29 @@ def main():
 
     spyderbot.lift_knees_group('left')
     for i in range(10):
+
+        spyderbot.turn_left(20)
         # spyderbot.lift_knee_slow(0)
         # spyderbot.lift_knee_slow(4)
         # spyderbot.lift_knee_slow(8)
 
         
 
-        spyderbot.move_hips_forward_group_abs('left')
+        # spyderbot.move_hips_forward_group_abs('left')
 
-        spyderbot.lower_knees_group('left')
+        # spyderbot.lower_knees_group('left')
 
-        spyderbot.lift_knees_group('right')
+        # spyderbot.lift_knees_group('right')
 
-        spyderbot.move_hips_backward_group_abs('left')
+        # spyderbot.move_hips_backward_group_abs('left')
 
-        spyderbot.move_hips_forward_group_abs('right')
+        # spyderbot.move_hips_forward_group_abs('right')
 
-        spyderbot.lower_knees_group('right')
+        # spyderbot.lower_knees_group('right')
 
-        spyderbot.lift_knees_group('left')
+        # spyderbot.lift_knees_group('left')
 
-        spyderbot.move_hips_backward_group_abs('right')
+        # spyderbot.move_hips_backward_group_abs('right')
 
         
 
@@ -43,7 +45,7 @@ def main():
 
         
 
-        time.sleep(1)
+        # time.sleep(1)
 
        
         # time.sleep(0.2)
@@ -68,7 +70,7 @@ def main():
         # spyderbot.lower_knee_slow(10)
         # time.sleep(0.2)
 
-    spyderbot.lower_knees_group("left")
+    # spyderbot.lower_knees_group("left")
     time.sleep(1)
 
 
