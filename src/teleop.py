@@ -5,11 +5,11 @@ import keyboard
 
 
 def main():
-    spyderbot = Spyderbot()
+    #spyderbot = Spyderbot()
     time.sleep(1)
 
     # makes shutdown function run when this program exits
-    atexit.register(spyderbot.shutdown)
+    #atexit.register(spyderbot.shutdown)
 
     while (1):
         if keyboard.is_pressed('w'):
