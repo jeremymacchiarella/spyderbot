@@ -14,7 +14,7 @@ def main():
     for i in range(10):
 
         # spyderbot.turn_right()
-        spyderbot.turn_left()
+        spyderbot.turn_right()
         # spyderbot.lift_knee_slow(0)
         # spyderbot.lift_knee_slow(4)
         # spyderbot.lift_knee_slow(8)
