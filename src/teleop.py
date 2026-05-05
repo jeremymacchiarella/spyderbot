@@ -1,27 +1,33 @@
 import curses
 import time
+from spyderbot import Spyderbot
+import atexit
 
 def main(stdscr):
-    stdscr.nodelay(True)  # non-blocking input
+    stdscr.nodelay(True)
+    spyderbot = Spyderbot()
+    time.sleep(1)
+
+    # makes shutdown function run when this program exits
+    atexit.register(spyderbot.shutdown)
 
     while True:
         key = stdscr.getch()
 
         if key == ord('w'):
-            print("forward")
+            spyderbot.move_forward()
 
         elif key == ord('a'):
-            print("turn left")
+            spyderbot.turn_left()
 
         elif key == ord('d'):
-            print("turn right")
+            spyderbot.turn_right()
 
-        elif key == ord('s'):
-            print("backward")
+        
 
-        elif key == ord('q'):
-            break
-
+       
         time.sleep(0.05)
 
-curses.wrapper(main)
+
+if __name__ == "__main__":
+    curses.wrapper(main)
