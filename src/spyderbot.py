@@ -214,16 +214,16 @@ class Spyderbot:
     def turn_left(self, delta = 20):
         self.lift_knees_group('right')
 
-        time.sleep(0.5)
+        
 
         # hips rotate foward
         self.move_servos_slow_group([(1, 90+delta), (5, 90+delta), (9, 90+delta)])
 
-        time.sleep(0.5)
+        
 
         self.lower_knees_group('right')
 
-        time.sleep(0.5)
+        
 
         self.lift_knees_group('left')
         # hips rotate foward
@@ -236,7 +236,7 @@ class Spyderbot:
 
         self.lower_knees_group('left')
 
-        time.sleep(0.5)
+        
         self.lift_knees_group('right')
         
 
@@ -245,7 +245,7 @@ class Spyderbot:
 
         self.lower_knees_group('right')
 
-        time.sleep(0.5)
+        
         
 
 
