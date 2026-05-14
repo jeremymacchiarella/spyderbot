@@ -106,7 +106,9 @@ class Spyderbot:
         else:
             self.move_servo_slow_delta(servo_idx, -30)
 
-    def move_servos_slow_group(self, servo_targets, step=2, delay=0.01):
+
+#####
+    def move_servos_slow_group(self, servo_targets, interrupt_check=None, step=2, delay=0.01):
 
         current_angles = {}
         for servo_idx, target in servo_targets:
@@ -119,7 +121,11 @@ class Spyderbot:
         done = False
 
         while not done: 
+            # Interrupt here
+            if interrupt_check and interrupt_check():
+                return False
             done = True
+
             for servo_idx, target in servo_targets:
                 current = current_angles[servo_idx]
 
@@ -135,6 +141,8 @@ class Spyderbot:
                     current_angles[servo_idx] = current
 
             time.sleep(delay)
+
+        return True
 
     
     def move_servos_slow_group_delta(self, servo_deltas, step=2, delay=0.01):
@@ -152,7 +160,6 @@ class Spyderbot:
             if goal > 180 or goal < 0:
                 print(f"error: invalid target for servo {servo_idx}")
                 sys.exit()
-
             servo_targets.append((servo_idx, goal))
 
         self.move_servos_slow_group(servo_targets, step, delay)
@@ -160,21 +167,21 @@ class Spyderbot:
             
         
 
-
-    def lift_knees_group(self, side):
+## Changed here
+    def lift_knees_group(self, side, interrupt_check=None):
         if (side == 'right'):
-            self.move_servos_slow_group([(0, 120),(4, 120),(8, 120)])
+            return self.move_servos_slow_group([(0, 120),(4, 120),(8, 120)], interrupt_check)
 
         if (side == 'left'):
-            self.move_servos_slow_group([(2, 120),(6, 120),(10, 120)])
+            return self.move_servos_slow_group([(2, 120),(6, 120),(10, 120)], interrupt_check)
 
-    def lower_knees_group(self, side):
+    def lower_knees_group(self, side, interrupt_check=None):
         if (side == 'right'):
-            self.move_servos_slow_group([(0, 60),(4, 64),(8, 60)])
+            return self.move_servos_slow_group([(0, 60),(4, 64),(8, 60)], interrupt_check)
 
         if (side == 'left'):
-            self.move_servos_slow_group([(2, 60),(6, 60),(10, 60)])
-
+            return self.move_servos_slow_group([(2, 60),(6, 60),(10, 60)], interrupt_check)
+#
     def move_hips_forward_group(self, side):
         if (side == 'right'):
             self.move_servos_slow_group_delta([(1, 50),(5, 50),(9, -50)])
@@ -193,120 +200,86 @@ class Spyderbot:
 
 
 
+# Changed here
 
-    def move_hips_forward_group_abs(self, side):
+    def move_hips_forward_group_abs(self, side, interrupt_check=None):
         if (side == 'right'):
-            self.move_servos_slow_group([(1, 140),(5, 140),(9, 40)])
+            return self.move_servos_slow_group([(1, 140),(5, 140),(9, 40)], interrupt_check)
 
         if (side == 'left'):
-            self.move_servos_slow_group([(3, 140),(7, 40),(11, 40)])
+            return self.move_servos_slow_group([(3, 140),(7, 40),(11, 40)], interrupt_check)
 
-    def move_hips_backward_group_abs(self, side):
+    def move_hips_backward_group_abs(self, side, interrupt_check=None):
         if (side == 'right'):
-            self.move_servos_slow_group([(1, 90),(5, 90),(9, 90)])
-
+            return self.move_servos_slow_group([(1, 90),(5, 90),(9, 90)], interrupt_check)
         if (side == 'left'):
-            self.move_servos_slow_group([(3, 90),(7, 90),(11, 90)])
+            return self.move_servos_slow_group([(3, 90),(7, 90),(11, 90)], interrupt_check)
 
-    
-
-    def turn_right(self, delta = 30):
-        self.lift_knees_group('left')
-
-        
-
-        # hips rotate foward
-        self.move_servos_slow_group([(3, 90-delta), (7, 90-delta), (11, 90-delta)])
-
-        
-
-        self.lower_knees_group('left')
-
-        
-
-        self.lift_knees_group('right')
-        # hips rotate foward
-        
-        self.move_servos_slow_group([(1, 90-delta), (5, 90-delta), (9, 90-delta)])
-        
-
-        self.move_servos_slow_group([(3, 90+delta), (7, 90+delta), (11, 90+delta)])
-        
-
-        self.lower_knees_group('right')
-
-        
-        self.lift_knees_group('left')
-        
-
-        self.move_servos_slow_group([(1, 90+delta), (5, 90+delta), (9, 90+delta)])
-        
-
+    def turn_right(self, interrupt_check):
+        delta = 35
+        if not self.lift_knees_group('left', interrupt_check):
+            return
+        if not self.move_servos_slow_group([(3, 90-delta), (7, 90-delta), (11, 90-delta)], interrupt_check):
+            return
+        if not self.lower_knees_group('left', interrupt_check):
+            return
+        if not self.lift_knees_group('right', interrupt_check):
+            return
+            # hips rotate foward
+        if not self.move_servos_slow_group([(1, 90-delta), (5, 90-delta), (9, 90-delta)], interrupt_check):
+            return
+        if not self.move_servos_slow_group([(3, 90+delta), (7, 90+delta), (11, 90+delta)], interrupt_check):
+            return
+        if not self.lower_knees_group('right', interrupt_check):
+            return 
+        if not self.lift_knees_group('left', interrupt_check):
+            return
+        if not self.move_servos_slow_group([(1, 90+delta), (5, 90+delta), (9, 90+delta)], interrupt_check):
+            return
         # self.lower_knees_group('left')
 
-    def turn_left(self, delta = 30):
-        self.lift_knees_group('right')
-
-        
-
-        # hips rotate foward
-        self.move_servos_slow_group([(1, 90+delta), (5, 90+delta), (9, 90+delta)])
-
-        
-
-        self.lower_knees_group('right')
-
-        
-
-        self.lift_knees_group('left')
-        # hips rotate foward
-        
-        self.move_servos_slow_group([(3, 90+delta), (7, 90+delta), (11, 90+delta)])
-        
-
-        self.move_servos_slow_group([(1, 90-delta), (5, 90-delta), (9, 90-delta)])
-        
-
-        self.lower_knees_group('left')
-
-        
-        self.lift_knees_group('right')
-        
-
-        self.move_servos_slow_group([(3, 90-delta), (7, 90-delta), (11, 90-delta)])
-        
-
+    def turn_left(self, interrupt_check=None):
+        delta = 35
+        if not self.lift_knees_group('right', interrupt_check):
+            return
+        if not self.move_servos_slow_group([(1, 90+delta), (5, 90+delta), (9, 90+delta)], interrupt_check):
+            return
+        if not self.lower_knees_group('right', interrupt_check):
+            return
+        if not self.lift_knees_group('left', interrupt_check):
+            return
+        if not self.move_servos_slow_group([(3, 90+delta), (7, 90+delta), (11, 90+delta)], interrupt_check):
+            return 
+        if not self.move_servos_slow_group([(1, 90-delta), (5, 90-delta), (9, 90-delta)], interrupt_check):
+            return
+        if not self.lower_knees_group('left', interrupt_check):
+            return
+        if not self.lift_knees_group('right', interrupt_check):
+            return
+        if not self.move_servos_slow_group([(3, 90-delta), (7, 90-delta), (11, 90-delta)], interrupt_check):
+            return
         # self.lower_knees_group('right')
 
         
-    def move_forward(self):
-
-        self.lift_knees_group('left')
-
-        self.lower_knees_group('left')
-
-        self.lift_knees_group('right')
-
-        self.move_hips_backward_group_abs('left')
-
-        self.move_hips_forward_group_abs('right')
-
-        self.lower_knees_group('right')
-
-        self.lift_knees_group('left')
-
-        self.move_hips_backward_group_abs('right')
-
-    
-
-
-    
-
-    
-    
-    
-
-    
+    def move_forward(self, interrupt_check=None): 
+        if not self.lift_knees_group('left', interrupt_check):
+            return
+        if not self.move_hips_forward_group_abs('left', interrupt_check):
+            return
+        if not self.lower_knees_group('left', interrupt_check):
+            return
+        if not self.lift_knees_group('right', interrupt_check):
+            return
+        if not self.move_hips_backward_group_abs('left', interrupt_check):
+            return
+        if not self.move_hips_forward_group_abs('right', interrupt_check):
+            return
+        if not self.lower_knees_group('right', interrupt_check):
+            return
+        if not self.lift_knees_group('left', interrupt_check):
+            return
+        if not self.move_hips_backward_group_abs('right', interrupt_check):
+            return   
 
 
     def shutdown(self):
