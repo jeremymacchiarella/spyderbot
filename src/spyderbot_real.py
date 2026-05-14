@@ -109,11 +109,11 @@ class Spyderbot:
     def move_leg_forward_smooth(self, knee_servo_idx, hip_servo_idx):
 
         if (hip_servo_idx > 5):
-            self.move_servos_slow_group([(knee_servo_idx, 120), (hip_servo_idx, 70)], delay=0.1)
-            self.move_servos_slow_group([(knee_servo_idx, 64), (hip_servo_idx, 50)], delay=0.1)
+            self.move_servos_slow_group([(knee_servo_idx, 110), (hip_servo_idx, 65)], delay=0.015)
+            self.move_servos_slow_group([(knee_servo_idx, 64), (hip_servo_idx, 40)], delay=0.015)
         else:  
-            self.move_servos_slow_group([(knee_servo_idx, 120), (hip_servo_idx, 110)], delay=0.1)
-            self.move_servos_slow_group([(knee_servo_idx, 64), (hip_servo_idx, 130)], delay=0.1)
+            self.move_servos_slow_group([(knee_servo_idx, 110), (hip_servo_idx, 115)], delay=0.015)
+            self.move_servos_slow_group([(knee_servo_idx, 64), (hip_servo_idx, 140)], delay=0.015)
     
 
 

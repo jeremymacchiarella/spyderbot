@@ -10,7 +10,7 @@ def main():
     # makes shutdown function run when this program exits
     atexit.register(spyderbot.shutdown)
 
-    spyderbot.move_leg_forward_smooth(0,1)
+    spyderbot.move_leg_forward_smooth(10,11)
     time.sleep(1)
 
 
