@@ -124,7 +124,7 @@ class Spyderbot:
 
         if (side == 'left'):
             self.move_servos_slow_group([(2, 110), (3, 115), (6, 110), (7, 65), (10, 110), (11, 65), (1, 90), (5, 90), (9, 90)], delay=0.015)
-            self.move_servos_slow_group([(2, 64), (3, 40), (6, 64), (7, 40), (10, 64), (11, 40)], delay=0.015)
+            self.move_servos_slow_group([(2, 64), (3, 140), (6, 64), (7, 40), (10, 64), (11, 40)], delay=0.015)
 
             
     
