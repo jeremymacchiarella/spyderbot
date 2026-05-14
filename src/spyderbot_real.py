@@ -115,7 +115,7 @@ class Spyderbot:
             self.move_servos_slow_group([(knee_servo_idx, 120), (hip_servo_idx, 110)], delay=0.1)
             self.move_servos_slow_group([(knee_servo_idx, 64), (hip_servo_idx, 130)], delay=0.1)
     
-    
+
 
 
 
@@ -134,6 +134,10 @@ class Spyderbot:
         while not done: 
             done = True
             for servo_idx, target in servo_targets:
+                if (servo_idx % 2 == 0): 
+                    step = 4
+                else:
+                    step = 2
                 current = current_angles[servo_idx]
 
                 if abs(current - target) > 0:
