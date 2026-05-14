@@ -106,6 +106,19 @@ class Spyderbot:
         else:
             self.move_servo_slow_delta(servo_idx, -30)
 
+    def move_leg_forward_smooth(self, knee_servo_idx, hip_servo_idx):
+
+        if (hip_servo_idx > 5):
+            self.move_servos_slow_group([(knee_servo_idx, 120), (hip_servo_idx, 70)])
+            self.move_servos_slow_group([(knee_servo_idx, 64), (hip_servo_idx, 50)])
+        else:  
+            self.move_servos_slow_group([(knee_servo_idx, 120), (hip_servo_idx, 110)])
+            self.move_servos_slow_group([(knee_servo_idx, 64), (hip_servo_idx, 130)])
+    
+    
+
+
+
     def move_servos_slow_group(self, servo_targets, step=2, delay=0.01):
 
         current_angles = {}
