@@ -117,14 +117,14 @@ class Spyderbot:
 
     def move_leg_forward_smooth_group(self, side):
         if (side == 'right'):
-            self.move_servos_slow_group([(0, 110), (1, 115), (4, 110), (5, 115), (8, 110), (9, 65), (3, 90), (7, 90), (11, 90)], delay=0.015)
-            self.move_servos_slow_group([(0, 64), (1, 140), (4, 64), (5, 140), (8, 64), (9, 40)], delay=0.015)
+            self.move_servos_slow_group([(0, 110), (1, 115), (4, 110), (5, 115), (8, 110), (9, 65), (3, 115), (7, 65), (11, 65)], delay=0.015)
+            self.move_servos_slow_group([(0, 64), (1, 140), (4, 64), (5, 140), (8, 64), (9, 40), (3, 90), (7, 90), (11, 90)], delay=0.015)
 
            
 
         if (side == 'left'):
-            self.move_servos_slow_group([(2, 110), (3, 115), (6, 110), (7, 65), (10, 110), (11, 65), (1, 90), (5, 90), (9, 90)], delay=0.015)
-            self.move_servos_slow_group([(2, 64), (3, 140), (6, 64), (7, 40), (10, 64), (11, 40)], delay=0.015)
+            self.move_servos_slow_group([(2, 110), (3, 115), (6, 110), (7, 65), (10, 110), (11, 65), (1, 115), (5, 115), (9, 65)], delay=0.015)
+            self.move_servos_slow_group([(2, 64), (3, 140), (6, 64), (7, 40), (10, 64), (11, 40), (1, 90), (5, 90), (9, 90)], delay=0.015)
 
             
     
