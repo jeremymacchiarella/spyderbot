@@ -106,6 +106,34 @@ class Spyderbot:
         else:
             self.move_servo_slow_delta(servo_idx, -30)
 
+    def move_leg_forward_smooth(self, knee_servo_idx, hip_servo_idx):
+
+        if (hip_servo_idx > 5):
+            self.move_servos_slow_group([(knee_servo_idx, 110), (hip_servo_idx, 65)], delay=0.015)
+            self.move_servos_slow_group([(knee_servo_idx, 64), (hip_servo_idx, 40)], delay=0.015)
+        else:  
+            self.move_servos_slow_group([(knee_servo_idx, 110), (hip_servo_idx, 115)], delay=0.015)
+            self.move_servos_slow_group([(knee_servo_idx, 64), (hip_servo_idx, 140)], delay=0.015)
+
+    def move_leg_forward_smooth_group(self, side):
+        if (side == 'right'):
+            self.move_servos_slow_group([(0, 110), (1, 115), (4, 110), (5, 115), (8, 110), (9, 65), (3, 90), (7, 90), (11, 90)], delay=0.01)
+            self.move_servos_slow_group([(0, 64), (1, 140), (4, 64), (5, 140), (8, 64), (9, 40)], delay=0.01)
+
+        if (side == 'left'):
+            self.move_servos_slow_group([(2, 110), (3, 115), (6, 110), (7, 65), (10, 110), (11, 65), (1, 90), (5, 90), (9, 90)], delay=0.01)
+            self.move_servos_slow_group([(2, 64), (3, 140), (6, 64), (7, 40), (10, 64), (11, 40)], delay=0.01)
+
+    def move_leg_backward_smooth_group(self, side):
+        if (side == 'right'):
+            self.move_servos_slow_group([(0, 110), (1, 65), (4, 110), (5, 65), (8, 110), (9, 115), (3, 90), (7, 90), (11, 90)], delay=0.01)
+            self.move_servos_slow_group([(0, 64), (1, 40), (4, 64), (5, 40), (8, 64), (9, 140)], delay=0.01)
+
+        if (side == 'left'):
+            self.move_servos_slow_group([(2, 110), (3, 65), (6, 110), (7, 115), (10, 110), (11, 115), (1, 90), (5, 90), (9, 90)], delay=0.01)
+            self.move_servos_slow_group([(2, 64), (3, 40), (6, 64), (7, 140), (10, 64), (11, 140)], delay=0.01)
+
+
     def move_servos_slow_group(self, servo_targets, step=2, delay=0.01):
 
         current_angles = {}
@@ -121,6 +149,12 @@ class Spyderbot:
         while not done: 
             done = True
             for servo_idx, target in servo_targets:
+                if (servo_idx % 2 == 0): 
+                    step = 4
+                else:
+                    step = 2
+                if (target == 90):
+                    step = 4
                 current = current_angles[servo_idx]
 
                 if abs(current - target) > 0:
@@ -314,16 +348,15 @@ class Spyderbot:
 
         self.move_hips_backward_group_abs('left')
 
-        
 
+    def move_forward_smooth(self):
 
+        self.move_leg_forward_smooth_group('left')
+        self.move_leg_forward_smooth_group('right')
     
-
-    
-    
-    
-
-    
+    def move_backward_smooth(self):
+        self.move_leg_backward_smooth_group('left')
+        self.move_leg_backward_smooth_group('right')
 
 
     def shutdown(self):

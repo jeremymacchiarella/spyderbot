@@ -89,7 +89,8 @@ def main(stdscr):
                         current_command = None
 
             if current_command == "forward":
-                spyderbot.move_forward(interrupted)
+                #spyderbot.move_forward(interrupted)
+                spyderbot.move_forward_smooth(interrupted)
             elif current_command == "left":
                 spyderbot.turn_left(interrupted)
             elif current_command == "right":
