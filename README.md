@@ -38,3 +38,8 @@ lift left before moving foward
         # spyderbot.move_hips_backward_group_abs('right')
 
     lower left at end of for loop
+
+
+
+BLUETOOTH
+sudo rfcomm connect hci0 8C:94:DF:93:E9:3A 1 
