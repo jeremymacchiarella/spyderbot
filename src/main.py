@@ -1,4 +1,4 @@
-from spyderbot import Spyderbot
+from spyderbot_real import Spyderbot
 import atexit
 import time
 
