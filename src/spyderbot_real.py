@@ -351,8 +351,12 @@ class Spyderbot:
 
     def move_forward_smooth(self):
 
-        self.move_leg_forward_smooth_group('left');
-        self.move_leg_forward_smooth_group('right');
+        self.move_leg_forward_smooth_group('left')
+        self.move_leg_forward_smooth_group('right')
+    
+    def move_backward_smooth(self):
+        self.move_leg_backward_smooth_group('left')
+        self.move_leg_backward_smooth_group('right')
 
 
     def shutdown(self):
