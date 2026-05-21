@@ -15,6 +15,9 @@ def main():
         spyderbot.move_forward_smooth()
 
     for i in range(10):
+        spyderbot.move_backward_smooth()
+
+    for i in range(10):
         spyderbot.turn_left()
 
     for i in range(10):

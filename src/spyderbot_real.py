@@ -124,7 +124,14 @@ class Spyderbot:
             self.move_servos_slow_group([(2, 110), (3, 115), (6, 110), (7, 65), (10, 110), (11, 65), (1, 90), (5, 90), (9, 90)], delay=0.01)
             self.move_servos_slow_group([(2, 64), (3, 140), (6, 64), (7, 40), (10, 64), (11, 40)], delay=0.01)
 
+    def move_leg_backward_smooth_group(self, side):
+        if (side == 'right'):
+            self.move_servos_slow_group([(0, 110), (1, 65), (4, 110), (5, 65), (8, 110), (9, 115), (3, 90), (7, 90), (11, 90)], delay=0.01)
+            self.move_servos_slow_group([(0, 64), (1, 40), (4, 64), (5, 40), (8, 64), (9, 140)], delay=0.01)
 
+        if (side == 'left'):
+            self.move_servos_slow_group([(2, 110), (3, 65), (6, 110), (7, 115), (10, 110), (11, 115), (1, 90), (5, 90), (9, 90)], delay=0.01)
+            self.move_servos_slow_group([(2, 64), (3, 40), (6, 64), (7, 140), (10, 64), (11, 140)], delay=0.01)
 
 
     def move_servos_slow_group(self, servo_targets, step=2, delay=0.01):
