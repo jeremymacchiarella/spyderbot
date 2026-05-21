@@ -7,21 +7,19 @@ def main():
     spyderbot = Spyderbot()
     time.sleep(1)
 
+
+    # ONLY FUNCTIONS THAT MATTER:
+    # spyderbot.move_forward_smooth()
+    # spyderbot.move_backward_smooth()
+    # spyderbot.turn_left()
+    # spyderbot.turn_right()
+
     # makes shutdown function run when this program exits
     atexit.register(spyderbot.shutdown)
 
-    #spyderbot.lift_knees_group('left')
-    for i in range(10):
-        spyderbot.move_forward_smooth()
 
     for i in range(10):
         spyderbot.move_backward_smooth()
-
-    for i in range(10):
-        spyderbot.turn_left()
-
-    for i in range(10):
-        spyderbot.turn_right()
     
     time.sleep(1)
 
