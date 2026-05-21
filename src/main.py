@@ -59,6 +59,7 @@ def movement_loop():
             spyderbot.turn_right()
 
         else:
+            spyderbot.__init__()
             # Nothing pressed
             time.sleep(0.01)
 
