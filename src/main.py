@@ -59,7 +59,6 @@ def movement_loop():
             spyderbot.turn_right()
 
         else:
-            spyderbot.__init__()
             # Nothing pressed
             time.sleep(0.01)
 
@@ -86,22 +85,26 @@ while True:
             state["forward"] = True
 
         elif line == "FWD_OFF":
+            spyderbot.__init__()
             state["forward"] = False
 
         elif line == "BACK_ON":
             state["backward"] = True
 
         elif line == "BACK_OFF":
+            spyderbot.__init__()
             state["backward"] = False
 
         elif line == "LEFT_ON":
             state["left"] = True
 
         elif line == "LEFT_OFF":
+            spyderbot.__init__()
             state["left"] = False
 
         elif line == "RIGHT_ON":
             state["right"] = True
 
         elif line == "RIGHT_OFF":
+            spyderbot.__init__()
             state["right"] = False
