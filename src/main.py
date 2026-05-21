@@ -35,6 +35,9 @@ lock = threading.Lock()
 # Movement worker thread
 # -----------------------------
 def movement_loop():
+
+    was_moving = False
+
     while True:
 
         with lock:
@@ -43,23 +46,30 @@ def movement_loop():
             left = state["left"]
             right = state["right"]
 
-        # Priority logic
-        # (adjust as desired)
+        moving = forward or backward or left or right
 
         if forward:
+            was_moving = True
             spyderbot.move_forward_smooth()
 
         elif backward:
+            was_moving = True
             spyderbot.move_backward_smooth()
 
         elif left:
+            was_moving = True
             spyderbot.turn_left()
 
         elif right:
+            was_moving = True
             spyderbot.turn_right()
 
         else:
-            # Nothing pressed
+            # Button released and movement finished
+            if was_moving:
+                spyderbot.__init__()
+                was_moving = False
+
             time.sleep(0.01)
 
 
@@ -85,26 +95,22 @@ while True:
             state["forward"] = True
 
         elif line == "FWD_OFF":
-            spyderbot.__init__()
             state["forward"] = False
 
         elif line == "BACK_ON":
             state["backward"] = True
 
         elif line == "BACK_OFF":
-            spyderbot.__init__()
             state["backward"] = False
 
         elif line == "LEFT_ON":
             state["left"] = True
 
         elif line == "LEFT_OFF":
-            spyderbot.__init__()
             state["left"] = False
 
         elif line == "RIGHT_ON":
             state["right"] = True
 
         elif line == "RIGHT_OFF":
-            spyderbot.__init__()
             state["right"] = False
