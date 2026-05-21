@@ -12,10 +12,14 @@ def main():
 
     #spyderbot.lift_knees_group('left')
     for i in range(10):
+        spyderbot.move_forward_smooth()
 
-        # spyderbot.turn_right()
-        spyderbot.move_forward()
-        
+    for i in range(10):
+        spyderbot.turn_left()
+
+    for i in range(10):
+        spyderbot.turn_right()
+    
     time.sleep(1)
 
 
