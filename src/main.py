@@ -67,7 +67,7 @@ def movement_loop():
         else:
             # Button released and movement finished
             if was_moving:
-                spyderbot.__init__()
+                spyderbot.init_servo_slow()
                 was_moving = False
 
             time.sleep(0.01)
