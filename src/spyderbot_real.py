@@ -16,8 +16,7 @@ class Spyderbot:
 
     def init_servo_pos(self):
 
-        servoInit = [(0, 64), (1, 90), (2, 64), (3, 90), (4, 64), (5, 90), (6, 64), (7, 90), (8, 64), (9, 90), (10, 64), (11, 90)]
-        self.move_servos_slow_group(servoInit, delay=0.01)
+        self.move_servos_slow_group([(0, 64), (1, 90), (2, 64), (3, 90), (4, 64), (5, 90), (6, 64), (7, 90), (8, 64), (9, 90), (10, 64), (11, 90)], delay=0.01)
 
         #for i in range(12):
         #    self.kit.servo[i].angle = self.SERVO_INIT_ANGLES[i]
