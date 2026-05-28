@@ -42,5 +42,8 @@ lift left before moving foward
 
 
 **BLUETOOTH**
-On Raspberri PI: sudo rfcomm connect hci0 8C:94:DF:93:E9:3A 1 
+On Raspberri PI:
+        sudo rfcomm release all
+        sudo rfcomm connect hci0 0C:8B:95:95:29:FE 1
+        
 On ESP32 Dev Board: Flash 
