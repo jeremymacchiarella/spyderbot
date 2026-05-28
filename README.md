@@ -41,5 +41,6 @@ lift left before moving foward
 
 
 
-BLUETOOTH
-sudo rfcomm connect hci0 8C:94:DF:93:E9:3A 1 
+**BLUETOOTH**
+On Raspberri PI: sudo rfcomm connect hci0 8C:94:DF:93:E9:3A 1 
+On ESP32 Dev Board: Flash 
