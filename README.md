@@ -61,6 +61,50 @@ Flash the ESP32 firmware before attempting to connect from the Raspberry Pi.
 
 ---
 
+## Project Structure
+
+### `util/`
+
+Utility scripts for manually positioning the robot and preparing it for operation.
+
+Recommended startup sequence:
+
+```bash
+python util/init_servo_pos.py
+```
+
+Other utility scripts:
+
+| File | Purpose |
+|--------|---------|
+| `init_servo_pos.py` | Move the robot into its initial ready/standing position. |
+| `60_servo_knees.py` | Set all knee servos to 60°. |
+| `90_servo_hips.py` | Set all hip servos to 90°. |
+| `reset.py` | Reset servos to a known state. |
+| `set_servos_none.py` | Disable servo outputs / release servo control. |
+
+Use these scripts when manually calibrating the robot or placing it into a known configuration before testing.
+
+---
+
+### `test/`
+
+Scripts used to verify servo operation and hardware functionality.
+
+| File | Purpose |
+|--------|---------|
+| `test_servos.py` | Verify that all servos respond correctly. |
+| `test_knees.py` | Test knee servo movement and direction. |
+| `test.py` | General testing and debugging script. |
+
+Run the test scripts whenever:
+- A servo has been rewired.
+- Servo numbering has changed.
+- Motion behavior appears incorrect.
+- Hardware functionality needs to be verified.
+
+The expected behavior is that each motor moves smoothly and in the correct direction according to the servo mapping and joint angle conventions described above.
+
 ## Notes
 
 - Knee servos control leg extension and compression.
