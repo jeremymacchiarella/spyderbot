@@ -1,49 +1,68 @@
-**Servos:** 
-0: right front knee
-1: right front hip
-2: right side knee
-3: right side hip 
-4: right back knee
-5: right back hip
-6: left back knee
-7: left back hip
-8: left side knee
-9: left side hip
-10: left front knee
-11: left front hip
+# SpyderBot
 
-virtual environemnt: 
+## Servo Mapping
+
+| Servo | Function |
+|--------|----------|
+| 0 | Right Front Knee |
+| 1 | Right Front Hip |
+| 2 | Right Side Knee |
+| 3 | Right Side Hip |
+| 4 | Right Back Knee |
+| 5 | Right Back Hip |
+| 6 | Left Back Knee |
+| 7 | Left Back Hip |
+| 8 | Left Side Knee |
+| 9 | Left Side Hip |
+| 10 | Left Front Knee |
+| 11 | Left Front Hip |
+
+---
+
+## Python Virtual Environment
+
+Activate the virtual environment before running any scripts:
+
+```bash
 source ~/spyderbot-env/bin/activate
+```
 
-for right side hips: positive angle is foward
-for left side hips: positive angle is backward
+---
 
+## Joint Angle Conventions
 
-moving foward: 
-lift left before moving foward
-# spyderbot.move_hips_forward_group_abs('left')
+### Right-Side Hips
+- Positive angle = forward rotation
 
-        # spyderbot.lower_knees_group('left')
+### Left-Side Hips
+- Positive angle = backward rotation
 
-        # spyderbot.lift_knees_group('right')
+---
 
-        # spyderbot.move_hips_backward_group_abs('left')
+## Bluetooth Setup
 
-        # spyderbot.move_hips_forward_group_abs('right')
+### Raspberry Pi
 
-        # spyderbot.lower_knees_group('right')
+Release any existing RFCOMM connections:
 
-        # spyderbot.lift_knees_group('left')
+```bash
+sudo rfcomm release all
+```
 
-        # spyderbot.move_hips_backward_group_abs('right')
+Connect to the ESP32:
 
-    lower left at end of for loop
+```bash
+sudo rfcomm connect hci0 0C:8B:95:95:29:FE 1
+```
 
+### ESP32 Dev Board
 
+Flash the ESP32 firmware before attempting to connect from the Raspberry Pi.
 
-**BLUETOOTH**
-On Raspberri PI:
-        sudo rfcomm release all
-        sudo rfcomm connect hci0 0C:8B:95:95:29:FE 1
-        
-On ESP32 Dev Board: Flash 
+---
+
+## Notes
+
+- Knee servos control leg extension and compression.
+- Hip servos control forward/backward leg movement.
+- Servo numbering is fixed and should match the wiring configuration.
